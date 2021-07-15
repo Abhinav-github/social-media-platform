@@ -23,14 +23,32 @@ const typeDefs = gql`
   type Post {
     id: Int!
     text: String!
-    user: User!
-    user_id: String!
+    user_id: Int!
+    name: String!
+  }
+
+  type Feed {
+    source_id: Int!
+    source_type: String!
+    post_id: Int!
   }
 
   type Query {
     community(id: Int!): Community!
     user(id: Int!): User!
+    feed(source_id: Int! source_type: String!): Feed!
   }
+
+  type Mutation {
+    addPost(text: String! user_id: Int!): Post
+    addFeed(source_id: Int! source_type: String!): Feed
+  }
+
 `;
 
+{/*
+  type Mutation {
+    addPost(text: String!): Post!
+  }
+*/}
 export const server = new ApolloServer({ typeDefs, resolvers });
