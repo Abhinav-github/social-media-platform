@@ -1,3 +1,0 @@
-run: sqlite3 database.db < seed.sql
-C:\sqlite3\sqlite3 database.db < seed.sql
-instead of yarn dev:seed (no cat on windows)
